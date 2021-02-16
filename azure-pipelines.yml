@@ -16,7 +16,7 @@ stages:
       vsVersion: Latest
 
 - stage: DBAVerificationScript
-  displayName: 'Script database schema changes'
+  displayName: 'Script db changes'
   variables: 
     - name: azureSubscription
       value: demo-mslearn-tailspin-azure
