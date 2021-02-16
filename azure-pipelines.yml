@@ -15,6 +15,24 @@ stages:
     parameters:
       vsVersion: Latest
 
+- stage: DBAVerificationScript
+  displayName: 'Script database schema changes'
+  variables: 
+    - name: azureSubscription
+      value: demo-mslearn-tailspin-azure
+    - name: tailspin.DEV
+  jobs: 
+  - template: dacpac/database-azure-deploy-job.yml@templates
+    parameters:
+      azureSubscription: '${{ variables.azureSubscription }}'
+      authenticationType: server
+      serverName: tailspinjosh-server-dev.database.windows.net
+      databaseName: tailspinjosh-db-dev
+      sqlUsername: joshadmin
+      sqlPassword: $(DB-Server-Password)
+      environment: dev
+      runDeploy: false
+
 - stage: deployDev
   displayName: Deploy to Dev
   condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
@@ -32,3 +50,4 @@ stages:
       sqlUsername: joshadmin
       sqlPassword: $(DB-Server-Password)
       environment: dev
+      runDeploy: true
