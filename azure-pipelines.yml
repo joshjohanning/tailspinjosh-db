@@ -20,7 +20,7 @@ stages:
   variables: 
     - name: azureSubscription
       value: demo-mslearn-tailspin-azure
-    - name: tailspin.DEV
+    - group: tailspin.DEV
   jobs: 
   - template: dacpac/database-azure-deploy-job.yml@templates
     parameters:
@@ -39,7 +39,7 @@ stages:
   variables: 
     - name: azureSubscription
       value: demo-mslearn-tailspin-azure
-    - name: tailspin.DEV
+    - group: tailspin.DEV
   jobs: 
   - template: dacpac/database-azure-deploy-job.yml@templates
     parameters:
