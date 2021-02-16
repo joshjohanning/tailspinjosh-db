@@ -14,6 +14,7 @@ stages:
   - template: dacpac/database-build-job.yml@templates
     parameters:
       vsVersion: Latest
+      dacpacName: tailspinjosh-db
 
 - stage: DBAVerificationScript
   displayName: 'Script db changes'
