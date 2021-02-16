@@ -29,7 +29,7 @@ stages:
       serverName: tailspinjosh-server-dev.database.windows.net
       databaseName: tailspinjosh-db-dev
       sqlUsername: joshadmin
-      sqlPassword: $(TESTVAR)
+      sqlPassword: ${{ variables.DB-Server-Password }}
       environment: dev
       runDeploy: false
 
@@ -48,6 +48,6 @@ stages:
       serverName: tailspinjosh-server-dev.database.windows.net
       databaseName: tailspinjosh-db-dev
       sqlUsername: joshadmin
-      sqlPassword: $(TESTVAR)
+      sqlPassword: ${{ variables.DB-Server-Password }}
       environment: dev
       runDeploy: true
