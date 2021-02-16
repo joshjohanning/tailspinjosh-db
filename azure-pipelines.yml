@@ -23,7 +23,7 @@ stages:
       value: demo-mslearn-tailspin-azure
     - name: tailspin.DEV
   jobs: 
-  - template: dacpac/database-azure-deploy.yml@templates
+  - template: dacpac/database-azure-deploy-job.yml@templates
     parameters:
       azureSubscription: '${{ variables.azureSubscription }}'
       authenticationType: server
