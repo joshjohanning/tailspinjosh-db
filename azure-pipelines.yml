@@ -14,13 +14,14 @@ stages:
   - template: dacpac/database-build-job.yml@templates
     parameters:
       vsVersion: Latest
+      dacpacName: tailspinjosh-db
 
 - stage: DBAVerificationScript
   displayName: 'Script db changes'
   variables: 
     - name: azureSubscription
       value: demo-mslearn-tailspin-azure
-    - name: tailspin.DEV
+    - group: tailspin.DEV
   jobs: 
   - template: dacpac/database-azure-deploy-job.yml@templates
     parameters:
@@ -29,7 +30,8 @@ stages:
       serverName: tailspinjosh-server-dev.database.windows.net
       databaseName: tailspinjosh-db-dev
       sqlUsername: joshadmin
-      sqlPassword: ${{ variables.DBServerPassword }}
+      sqlPassword: $(DBServerPassword)
+      additionalArguments: '/p:IgnoreAuthorizer=True /p:ScriptDatabaseOptions=False /p:ExcludeObjectTypes=RoleMembership /p:BlockOnPossibleDataLoss=False /p:GenerateSmartDefaults=True'
       environment: dev
       runDeploy: false
 
@@ -39,7 +41,7 @@ stages:
   variables: 
     - name: azureSubscription
       value: demo-mslearn-tailspin-azure
-    - name: tailspin.DEV
+    - group: tailspin.DEV
   jobs: 
   - template: dacpac/database-azure-deploy-job.yml@templates
     parameters:
@@ -48,6 +50,7 @@ stages:
       serverName: tailspinjosh-server-dev.database.windows.net
       databaseName: tailspinjosh-db-dev
       sqlUsername: joshadmin
-      sqlPassword: ${{ variables.DBServerPassword }}
+      sqlPassword: $(DBServerPassword)
+      additionalArguments: '/p:IgnoreAuthorizer=True /p:ScriptDatabaseOptions=False /p:ExcludeObjectTypes=RoleMembership /p:BlockOnPossibleDataLoss=False /p:GenerateSmartDefaults=True'
       environment: dev
       runDeploy: true
