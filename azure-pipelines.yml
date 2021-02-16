@@ -31,6 +31,7 @@ stages:
       databaseName: tailspinjosh-db-dev
       sqlUsername: joshadmin
       sqlPassword: $(DBServerPassword)
+      additionalArguments: '/p:IgnoreAuthorizer=True /p:ScriptDatabaseOptions=False /p:ExcludeObjectTypes=RoleMembership /p:BlockOnPossibleDataLoss=False /p:GenerateSmartDefaults=True'
       environment: dev
       runDeploy: false
 
@@ -50,5 +51,6 @@ stages:
       databaseName: tailspinjosh-db-dev
       sqlUsername: joshadmin
       sqlPassword: $(DBServerPassword)
+      additionalArguments: '/p:IgnoreAuthorizer=True /p:ScriptDatabaseOptions=False /p:ExcludeObjectTypes=RoleMembership /p:BlockOnPossibleDataLoss=False /p:GenerateSmartDefaults=True'
       environment: dev
       runDeploy: true
