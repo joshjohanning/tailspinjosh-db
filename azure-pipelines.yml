@@ -32,7 +32,7 @@ stages:
       sqlUsername: joshadmin
       sqlPassword: $(DBServerPassword)
       additionalArguments: '/p:IgnoreAuthorizer=True /p:ScriptDatabaseOptions=False /p:ExcludeObjectTypes=RoleMembership /p:BlockOnPossibleDataLoss=False /p:GenerateSmartDefaults=True'
-      environment: dev
+      environment: dev-db-approve
       runDeploy: false
 
 - stage: deployDev
