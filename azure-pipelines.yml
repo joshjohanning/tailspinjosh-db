@@ -54,3 +54,23 @@ stages:
       additionalArguments: '/p:IgnoreAuthorizer=True /p:ScriptDatabaseOptions=False /p:ExcludeObjectTypes=RoleMembership /p:BlockOnPossibleDataLoss=False /p:GenerateSmartDefaults=True'
       environment: dev
       runDeploy: true
+
+# - stage: deployProd
+#   displayName: Deploy to Prod
+#   condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+#   variables: 
+#     - name: azureSubscription
+#       value: demo-mslearn-tailspin-azure
+#     - group: tailspin.PROD
+#   jobs: 
+#   - template: dacpac/database-azure-deploy-job.yml@templates
+#     parameters:
+#       azureSubscription: '${{ variables.azureSubscription }}'
+#       authenticationType: server
+#       serverName: tailspinjosh-server-prod.database.windows.net
+#       databaseName: tailspinjosh-db-prod
+#       sqlUsername: joshadmin
+#       sqlPassword: $(DBServerPassword)
+#       additionalArguments: '/p:IgnoreAuthorizer=True /p:ScriptDatabaseOptions=False /p:ExcludeObjectTypes=RoleMembership /p:BlockOnPossibleDataLoss=False /p:GenerateSmartDefaults=True'
+#       environment: prod
+#       runDeploy: true
